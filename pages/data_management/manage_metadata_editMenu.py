@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 from base.base import Base
 from pages.home_page import HomeEnter
+from pages.login import Login
 
 
 class EditMenu(Base):
@@ -50,8 +51,10 @@ class EditMenu(Base):
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()
+    login = Login(driver)
+    login.login('admin', '123456')
     enter = HomeEnter(driver)
-    enter.enter_front('admin', '123456', 'id', '303', 'xpath', '//*[@title="元数据维护"]')
+    enter.enter_front('id', '303', 'xpath', '//*[@title="元数据维护"]')
     eidt = EditMenu(driver)
     eidt.move_menu()
     driver.quit()

@@ -16,6 +16,11 @@ class Base:
     def open(self, url):
         return self.driver.get(url)
 
+    # 关闭当前窗口
+    @errorLog
+    def close(self):
+        return self.driver.close()
+
     # 关闭浏览器
     @errorLog
     def quit(self):
