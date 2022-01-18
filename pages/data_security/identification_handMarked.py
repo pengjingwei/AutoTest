@@ -32,27 +32,39 @@ class HandMark(Base):
     def marked(self):
         sleep(1)
         self.switch_frame('indexSrc')
-
+        # 点击手工标记
         self.click(self.dict_loc['手工标记'])
         sleep(1)
         self.switch_frame('layui-layer-iframe2')
 
+        # 点击选择数据资产
         self.click(self.dict_loc['选择数据资产'])
+        # 选择数据资产目录
         self.click(self.dict_loc['数据资产目录'])
 
+        # 选择预算管理一体化
         self.scroll_click(self.dict_loc['预算管理一体化'])
+        # 选择预算信息
         self.scroll_click(self.dict_loc['预算信息'])
+        # 选择预算编制
         self.scroll_click(self.dict_loc['预算编制'])
+        # 选择单位收入预算表
         self.scroll_click(self.dict_loc['单位收入预算表'])
 
+        # 点击敏感数据标签选择框
         self.click(self.dict_loc['敏感数据标签'])
+        # 选择预算年度_test选项
         self.scroll_click(self.dict_loc['预算年度_test'])
 
         self.parent_frame()
-
+        # 点击保存
         self.click(self.dict_loc['保存'])
 
         sleep(3)
+        # 关闭当前窗口
+        self.close()
+        # 将窗口句柄切换回初始页
+        self.switch_window(0)
 
 
 if __name__ == '__main__':
@@ -67,4 +79,6 @@ if __name__ == '__main__':
     mark = HandMark(driver)
     mark.marked()
 
+    home.enter_front('id', '303', 'xpath', '//*[text()="元数据维护"]')
+    sleep(5)
     driver.quit()
