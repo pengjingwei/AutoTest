@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from base.base import Base
+from base.log import log
 from pages.home_page import HomeEnter
 from pages.login import Login
 
@@ -27,6 +28,7 @@ class HandMark(Base):
         '保存': (By.XPATH, '//*[@id="layui-layer2"]/div[3]/a[1]')
     }
 
+    @log
     def marked(self):
         sleep(1)
         self.switch_frame('indexSrc')
