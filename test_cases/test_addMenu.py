@@ -5,6 +5,7 @@ from selenium import webdriver
 
 from pages.home_page import HomeEnter
 from pages.data_management.metadata import MetaData
+from pages.login import Login
 from util.readExcel import ReadExcel
 
 
@@ -22,8 +23,15 @@ class TestAddMenu(TestCase):
     @unpack
     def test_addMenu(self, username, password, manner_over, path_over, manner, path, name_text, expect, text_flag=0,
                      instruction_text='', flag=1):
+        # 登录
+        login = Login(self.driver)
+        login.login(username, password)
+
+        # 从首页进入其他界面
         enter = HomeEnter(self.driver)
-        enter.enter_front(username, password, manner_over, path_over, manner, path)
+        enter.enter_front(manner_over, path_over, manner, path)
+
+        # 元数据维护【+】功能
         metadata = MetaData(self.driver)
         if text_flag == '':
             text_flag = 0
