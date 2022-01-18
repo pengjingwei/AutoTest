@@ -101,6 +101,18 @@ class Base:
         el = Select(select)
         return el.select_by_visible_text(text)
 
+    # 定位存在滚动条导致元素不可见的元素
+    @errorLog
+    def scroll_loc(self, loc):
+        el = self.driver.find_element(*loc)
+        return self.driver.execute_script("arguments[0].scrollIntoView(false);", el)
+
+    # 直接点击滚动条导致元素不可见的元素
+    @errorLog
+    def scroll_click(self, loc):
+        el = self.driver.find_element(*loc)
+        self.driver.execute_script("arguments[0].click();", el)
+
     # 通过value值选择下拉列表中的选项
     @errorLog
     def selector_value(self, loc, value):
