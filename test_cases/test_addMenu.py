@@ -4,7 +4,7 @@ from ddt import ddt, unpack, data
 from selenium import webdriver
 
 from pages.home_page import HomeEnter
-from pages.metadata import MetaData
+from pages.data_management.metadata import MetaData
 from util.readExcel import ReadExcel
 
 

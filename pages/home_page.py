@@ -5,26 +5,13 @@
 from time import sleep
 
 from base.base import Base
-from pages.login import Login
 
 
 class HomeEnter(Base):
 
-    def login(self, username, password):
-        """
-        登录操作
-        :param username: 用户名
-        :param password: 密码
-        :return: 无
-        """
-        login = Login(self.driver)
-        login.login(username, password)
-
-    def enter_front(self, username, password, manner_over, path_over, manner, path):
+    def enter_front(self, manner_over, path_over, manner, path):
         """
         首页进入各模块的前置操作,将鼠标移动到大模块之上，点击大模块下的各子模块
-        :param username: 登录用户名
-        :param password: 登录密码
         :param manner_over:定位元素的方式
         :param path_over:定位元素方式的具体值
         :param manner: 定位元素的方式
@@ -33,7 +20,7 @@ class HomeEnter(Base):
         """
         module = (manner_over, path_over)
         submodules = (manner, path)
-        self.login(username, password)
+
         sleep(1)
         # 将鼠标移动到大模块之上
         self.mouse_over(module)

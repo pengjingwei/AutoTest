@@ -1,7 +1,7 @@
 from unittest import TestCase
 from selenium import webdriver
 
-from pages.policyManagement import PolicyManage
+from pages.data_management.policyManagement import PolicyManage
 
 
 class TestAddPolicy(TestCase):
