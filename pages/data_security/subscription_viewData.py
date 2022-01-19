@@ -21,18 +21,16 @@ class subscription_viewData(Base):
     dataShare = ('xpath', '//a[@id="306"]')
     # 数据订阅
     databook = ('xpath', "//a[@title='数据订阅']")
-    # addStrategy = ('xpath', '//*[@id="addStrategy"]')
+
     #预算信息
     layerSelect1 = ('xpath', "(//i[@data-id='9595C93AA08043B1917EE755E74D6DDA'])[1]")
     # 【预算编制】
     layerSelect2 = ('xpath', '//cite[@data-title="预算编制"]')
-    # layerSelect3 = ('xpath', '//*[text()="ODS"]')
+
     @log
     def share_viewData(self):
 
-        login = Login(self.driver)
-        login.login('admin', '123456')
-        sleep(1)
+
         # 移动鼠标到【数据共享】上，点击【数据订阅】，并切换到新打开的窗口
         self.mouse_over(self.dataShare)
         self.click(self.databook)
