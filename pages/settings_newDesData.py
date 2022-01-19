@@ -60,6 +60,7 @@ if __name__ == '__main__':
     login.login('admin', '123456')
     enter = HomeEnter(driver)
     enter.enter_front('id', '308', 'xpath', '//*[@title="脱敏设置"]')
+    # 实例化
     addfisalyear = FiscalYEAR(driver)
     addfisalyear.add_fiscal_year()
     sleep(3)
