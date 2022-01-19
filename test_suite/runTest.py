@@ -1,13 +1,13 @@
-import os
+
 import time
 import unittest
 
 from HTMLTestRunner import HTMLTestRunner
 
-tests = unittest.defaultTestLoader.discover(r'E:\PycharmProjects\workTest\test_cases', pattern="test*.py")
+tests = unittest.defaultTestLoader.discover(r'../test_cases', pattern="test*.py")
 
 now = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
-filename = r"E:\PycharmProjects\workTest\reportReport{}.html".format(now)
+filename = r"../report/reportReport{}.html".format(now)
 file = open(file=filename, mode='w+', encoding='utf-8')
 
 runner = HTMLTestRunner.HTMLTestRunner(
