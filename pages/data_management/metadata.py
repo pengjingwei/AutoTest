@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from base.base import Base
 from base.log import log, consoleLog
 from pages.home_page import HomeEnter
+from pages.login import Login
 
 
 class MetaData(Base):
@@ -71,8 +72,10 @@ class MetaData(Base):
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()
+    login = Login(driver)
+    login.login('admin', '123456')
     enter = HomeEnter(driver)
-    enter.enter_front('admin', '123456', 'id', '303', 'xpath', '//*[@title="元数据维护"]')
+    enter.enter_front('id', '303', 'xpath', '//*[@title="元数据维护"]')
     metadata = MetaData(driver)
     res = metadata.add_menu('自动化测试')
     print(res)
