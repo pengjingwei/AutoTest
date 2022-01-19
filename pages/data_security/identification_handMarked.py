@@ -25,7 +25,8 @@ class HandMark(Base):
                     '1]/div[2]/div[2]/div'),
         '敏感数据标签': (By.XPATH, '//*[@id="sensitiveTab"]/xm-select/div[2]'),
         '预算年度_test': (By.XPATH, '//*[@id="sensitiveTab"]/xm-select/div[3]/div/div/div[3]/div[7]/i'),
-        '保存': (By.XPATH, '//*[@id="layui-layer2"]/div[3]/a[1]')
+        '保存': (By.XPATH, '//*[@id="layui-layer2"]/div[3]/a[1]'),
+        '返回结果': (By.XPATH, '//*[@id="layui-layer3"]/div')
     }
 
     @log
@@ -59,12 +60,15 @@ class HandMark(Base):
         self.parent_frame()
         # 点击保存
         self.click(self.dict_loc['保存'])
-
-        sleep(3)
+        sleep(1)
+        # 获取弹框内的信息作为断言依据
+        result = self.get_text(self.dict_loc['返回结果'])
         # 关闭当前窗口
         self.close()
         # 将窗口句柄切换回初始页
         self.switch_window(0)
+
+        return result
 
 
 if __name__ == '__main__':
@@ -77,8 +81,8 @@ if __name__ == '__main__':
     home.enter_front('id', '308', 'xpath', '//*[text()="敏感数据识别"]')
 
     mark = HandMark(driver)
-    mark.marked()
-
+    res = mark.marked()
+    print(res)
     home.enter_front('id', '303', 'xpath', '//*[text()="元数据维护"]')
     sleep(5)
     driver.quit()
