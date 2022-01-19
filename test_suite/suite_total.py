@@ -15,14 +15,13 @@ def load_cases():
     # 定义测试用例文件的获取路径
     path = '../test_cases/'
     discover = unittest.defaultTestLoader.discover(start_dir=path, pattern='test_login.py')
-
     # 配置测试报告信息
     # 时间戳
     date = time.strftime('%Y-%m-%d_%H_%M_%S')
     # 测试执行者：在HTMLTestReport报告中专属参数
     report_tester = 'admin'
     # 保存路径
-    report_dir = './report/'
+    report_dir = '../report/'
 
     # 测试报告的title
     report_title = '数据中台的测试报告'
