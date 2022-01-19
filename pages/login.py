@@ -1,4 +1,3 @@
-
 from base.base import Base
 from base.log import log, consoleLog
 
@@ -13,7 +12,7 @@ class Login(Base):
     @log
     def login(self, username, password):
         self.open(self.url)
-        self.max_window()
+        self.max_window()  # 使用option设置可省略
         self.wait(10)
 
         self.input(self.username, username)

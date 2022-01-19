@@ -23,12 +23,10 @@ class ChromeOptions:
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         # 去掉账号密码弹窗
-        prefs = {}
-        prefs["credentials_enable_service"] = False
-        prefs['profile.password_manager_enable'] = False
+        prefs = {
+            "credentials_enable_service": False,
+            'profile.password_manager_enable': False
+        }
         options.add_experimental_option("prefs", prefs)
 
-
         return options
-
-
