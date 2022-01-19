@@ -48,8 +48,9 @@ class AddData(Base):
     # 版本 - 下拉框
     vision = ('xpath', '//input[@placeholder="请输入版本"]')
     visionText = "V 4.2"
-    # 保存 -
+    # 保存  //div[@class='layui-layer-btn layui-layer-btn-']//a[1]
     save = ('link text', '保存')
+    # save = ('xpath', '//div[@class="layui-layer-btn layui-layer-btn-"]//a[1]')
     # 保存成功断言
     save_assert = ('xpath', '//*[text()="退出"]')
 
@@ -94,7 +95,7 @@ class AddData(Base):
         # 版本
         self.input(self.vision,self.visionText)
         sleep(1)
-        # 保存
-
+        # 保存 //div[@class='layui-layer-btn layui-layer-btn-']//a[1]
+        self.parent_frame()
         self.click(self.save)
         # result = self.get_text(self.dict_loc['弹窗文本'])

@@ -11,12 +11,13 @@ import unittest
 
 from selenium import webdriver
 
+from base.chrome_options import ChromeOptions
 from pages.data_management.manage_metadata_addData import AddData
 
 
 class TestAddData(unittest.TestCase):
     def setUp(self) -> None:
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=ChromeOptions().options())
 
     def tearDown(self) -> None:
         print("测试结束")
