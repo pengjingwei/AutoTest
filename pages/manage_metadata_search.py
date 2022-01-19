@@ -11,7 +11,7 @@ from pages.home_page import HomeEnter
 class Search(Base):
     def search_item(self, query_text):
         sleep(1)
-        # 搜索框定位
+
         self.switch_frame('indexSrc')
         # 搜索框定位
         search_box = (By.XPATH, '//*[@id="keywords"]')
