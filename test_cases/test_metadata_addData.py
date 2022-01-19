@@ -23,9 +23,8 @@ class TestAddData(unittest.TestCase):
         # self.driver.quit()
 
     def test_addData(self):
-        action=AddData(self.driver)
+        action = AddData(self.driver)
         action.metadata()
-
 
 
 if __name__ == '__main__':

@@ -29,7 +29,9 @@ class TestviewData(unittest.TestCase):
     def tearDown(self) -> None:
         print("测试结束")
         self.driver.quit()
+
     # 查看加密规则
+    # @unittest.skip('开发未完成，本期不处理')
     def test_viewData(self):
         action = subscription_viewData(self.driver)
         action.share_viewData()

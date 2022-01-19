@@ -1,6 +1,6 @@
 import logging
 
-file = open(r'E:\PycharmProjects\workTest\report\log.log', encoding='utf-8', mode='a')
+file = open(r'./logger', encoding='utf-8', mode='a')
 logging.basicConfig(
     level=logging.INFO,
     stream=file,

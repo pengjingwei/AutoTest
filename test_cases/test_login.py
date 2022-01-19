@@ -2,13 +2,14 @@ from unittest import TestCase
 
 from selenium import webdriver
 
+from base.chrome_options import ChromeOptions
 from pages.login import Login
 
 
 class TestLogin(TestCase):
 
     def setUp(self) -> None:
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=ChromeOptions().options())
 
     def tearDown(self) -> None:
         self.driver.quit()
