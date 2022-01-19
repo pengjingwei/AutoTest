@@ -8,28 +8,33 @@
 @time: 2022/1/18 11:41
 """
 import unittest
+from time import sleep
 from unittest import TestCase
 
 from selenium import webdriver
 
+from base.chrome_options import ChromeOptions
 from pages.data_security.subscription_viewData import subscription_viewData
+from pages.login import Login
 
 
 class TestviewData(unittest.TestCase):
+    # 前置条件
     def setUp(self) -> None:
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=ChromeOptions().options())
+        login = Login(self.driver)
+        login.login('admin', '123456')
+        sleep(1)
 
     def tearDown(self) -> None:
         print("测试结束")
-        # self.driver.quit()
+        self.driver.quit()
 
+    # 查看加密规则
+    # @unittest.skip('开发未完成，本期不处理')
     def test_viewData(self):
-        action=subscription_viewData(self.driver)
+        action = subscription_viewData(self.driver)
         action.share_viewData()
-        # policy_manage = PolicyManage(self.driver)
-        # res = policy_manage.add_policy('名称', '自动化新增策略', '自动化新增策略')
-        # expect = '新增策略'
-        # self.assertEqual(expect, res)
 
 
 if __name__ == '__main__':

@@ -204,3 +204,19 @@ class Base:
     def mouse_drag_move(self, loc, x, y):
         el = self.location(loc)
         self.mouse_action().drag_and_drop_by_offset(el, x, y).perform()
+
+
+    # 定位元素
+    def locate(self, name, value):
+        return self.driver.find_element(name, value)
+
+        # 断言文本信息：可以捕获异常进行处理，也可以不捕获，因为报错就相当于断言失败。
+
+    def assert_text(self, name, value, expect):
+        try:
+            reality = self.locate(name, value).text
+            assert expect == reality, '断言失败，实际结果为：{}'.format(reality)
+            return True
+        except Exception as e:
+            print('断言失败信息：' + str(e))
+            return False

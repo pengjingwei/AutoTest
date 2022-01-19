@@ -19,10 +19,17 @@ class Label(Base):
         '预算年度_测试': (By.XPATH, '//*[@id="xmSelect"]/xm-select/div[3]/div/div/div[2]/div[27]/div'),
         '加密方式': (By.XPATH, '//*[@id="encryptionModel"]/../div[1]'),
         'AES-128': (By.XPATH, '//*[@id="encryptionModel"]/../div[1]/dl/dd[2]'),
-        '保存': (By.XPATH, '//*[@id="layui-layer1"]/div[3]/a[1]')
+        '保存': (By.XPATH, '//*[@id="layui-layer1"]/div[3]/a[1]'),
+        '返回结果': (By.XPATH, '//*[@id="layui-layer2"]/div')
     }
 
     def add_label(self, code, name):
+        """
+        【数据安全】-【敏感标签设置】-【新增】
+        :param code:标签编码，格式：以字母开头，由字母、数据及下划线组成
+        :param name:标签名
+        :return:弹出框中的文本信息
+        """
         sleep(1)
         self.switch_frame('indexSrc')
         # 点击新增按钮
@@ -53,12 +60,15 @@ class Label(Base):
         self.parent_frame()
         # 点击保存按钮
         self.click(self.dict_loc['保存'])
-
-        sleep(3)
+        sleep(1)
+        # 获取弹框内的信息作为断言依据
+        result = self.get_text(self.dict_loc['返回结果'])
         # 关闭当前窗口
         self.close()
         # 将窗口句柄切换回初始页
         self.switch_window(0)
+
+        return result
 
 
 if __name__ == '__main__':
@@ -71,5 +81,5 @@ if __name__ == '__main__':
     home.enter_front('id', '308', 'xpath', '//*[text()="敏感标签设置"]')
 
     label = Label(driver)
-    label.add_label(1024, '测试')
+    label.add_label('test', '测试')
     driver.quit()

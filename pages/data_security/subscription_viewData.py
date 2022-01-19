@@ -22,14 +22,14 @@ class subscription_viewData(Base):
     # 数据订阅
     databook = ('xpath', "//a[@title='数据订阅']")
     # addStrategy = ('xpath', '//*[@id="addStrategy"]')
-    #预算信息
+    # 预算信息
     layerSelect1 = ('xpath', "(//i[@data-id='9595C93AA08043B1917EE755E74D6DDA'])[1]")
     # 【预算编制】
     layerSelect2 = ('xpath', '//cite[@data-title="预算编制"]')
+
     # layerSelect3 = ('xpath', '//*[text()="ODS"]')
     @log
     def share_viewData(self):
-
         login = Login(self.driver)
         login.login('admin', '123456')
         sleep(1)
