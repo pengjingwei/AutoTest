@@ -99,13 +99,6 @@ class Base:
     def parent_frame(self):
         self.driver.switch_to.parent_frame()
 
-    # 通过内容选择下拉列表中的选项
-    @errorLog
-    def selector_text(self, loc, text):
-        select = self.driver.find_element(*loc)
-        el = Select(select)
-        return el.select_by_visible_text(text)
-
     # 定位存在滚动条导致元素不可见的元素
     @errorLog
     def scroll_loc(self, loc):
@@ -117,6 +110,13 @@ class Base:
     def scroll_click(self, loc):
         el = self.driver.find_element(*loc)
         self.driver.execute_script("arguments[0].click();", el)
+
+    # 通过内容选择下拉列表中的选项
+    @errorLog
+    def selector_text(self, loc, text):
+        select = self.driver.find_element(*loc)
+        el = Select(select)
+        return el.select_by_visible_text(text)
 
     # 通过value值选择下拉列表中的选项
     @errorLog
@@ -205,13 +205,11 @@ class Base:
         el = self.location(loc)
         self.mouse_action().drag_and_drop_by_offset(el, x, y).perform()
 
-
     # 定位元素
     def locate(self, name, value):
         return self.driver.find_element(name, value)
 
-        # 断言文本信息：可以捕获异常进行处理，也可以不捕获，因为报错就相当于断言失败。
-
+    # 断言文本信息：可以捕获异常进行处理，也可以不捕获，因为报错就相当于断言失败。
     def assert_text(self, name, value, expect):
         try:
             reality = self.locate(name, value).text
