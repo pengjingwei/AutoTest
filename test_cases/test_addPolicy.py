@@ -1,7 +1,7 @@
 from unittest import TestCase
 from selenium import webdriver
 
-from pages.data_management.policyManagement import PolicyManage
+from pages.data_management.policy_addPolicy import AddPolicy
 
 
 class TestAddPolicy(TestCase):
@@ -12,7 +12,7 @@ class TestAddPolicy(TestCase):
         self.driver.quit()
 
     def test_addPolicy(self):
-        policy_manage = PolicyManage(self.driver)
+        policy_manage = AddPolicy(self.driver)
         res = policy_manage.add_policy('名称', '自动化新增策略', '自动化新增策略')
         expect = '新增策略'
         self.assertEqual(expect, res)
