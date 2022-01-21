@@ -38,7 +38,7 @@ class AddPolicy(Base):
     @log
     def add_policy(self, name, chinese_name, policy_name, policy_des):
         """
-        新增策略
+        【数据管控】-【策略管理】-【新增策略】
         :param name: 字段名
         :param chinese_name: 字段中文名
         :param policy_name: 策略名称
