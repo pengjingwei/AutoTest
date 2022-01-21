@@ -1,11 +1,9 @@
 from time import sleep
 
-import self as self
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from base.base import Base
-from base.log import log
 from pages.home_page import HomeEnter
 from pages.login import Login
 
