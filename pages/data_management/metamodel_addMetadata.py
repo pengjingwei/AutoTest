@@ -1,10 +1,7 @@
 from random import randrange
-
 from selenium import webdriver
 from time import sleep
-
 from selenium.webdriver.common.by import By
-
 from base.base import Base
 from pages.home_page import HomeEnter
 from pages.login import Login
@@ -27,9 +24,9 @@ class AddMetaData(Base):
         '输入编码': (By.XPATH, '//*[@id="newAdd"]/div[1]/div/input'),
         '编码内容': str(randrange(100)),
         '点击输入中文表名': (By.XPATH, '//*[@id="newAdd"]/div[2]/div/input'),
-        '表中文名': '预算测试表'+str(randrange(100)),
+        '表中文名': '预算测试表' + str(randrange(100)),
         '点击输入英文表名': (By.XPATH, '//*[@id="newAdd"]/div[3]/div/input'),
-        '表名': 'PAY_TEST'+str(randrange(100)),
+        '表名': 'PAY_TEST' + str(randrange(100)),
         '输入版本': (By.XPATH, '//*[@id="newAdd"]/div[4]/div/input'),
         '版本': '0.0.1',
         '保存': (By.XPATH, '//*[@id="layui-layer2"]/div[3]/a[1]')
