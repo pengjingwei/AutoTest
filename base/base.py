@@ -39,12 +39,19 @@ class Base:
     # 定位元素
     @errorLog
     def location(self, loc):
+        self.highlightElement(loc)
         return self.driver.find_element(*loc)
+
+    def highlightElement(self, loc):
+        ele = self.driver.find_element(*loc)  # 定位元素
+        self.driver.execute_script("arguments[0].setAttribute('style', arguments[1]);", ele,
+                                   "background: green; border: 2px solid red;")  # 元素的背景色和边框设置成绿色和红色
 
     # 点击目标元素
     @errorLog
     def click(self, loc):
         try:
+            self.highlightElement(loc)
             self.driver.find_element(*loc).click()
         except:
             loc.click()
@@ -53,6 +60,7 @@ class Base:
     @errorLog
     def input(self, loc, text):
         try:
+            self.highlightElement(loc)
             return self.driver.find_element(*loc).send_keys(text)
         except:
             return loc.send_keys(text)
@@ -69,6 +77,7 @@ class Base:
     @errorLog
     def get_text(self, loc):
         try:
+            self.highlightElement(loc)
             return self.driver.find_element(*loc).text
         except:
             return loc.text
@@ -210,9 +219,9 @@ class Base:
         return self.driver.find_element(name, value)
 
     # 断言文本信息：可以捕获异常进行处理，也可以不捕获，因为报错就相当于断言失败。
-    def assert_text(self, name, value, expect):
+    def assert_text(self, loc, expect):
         try:
-            reality = self.locate(name, value).text
+            reality = self.driver.find_element(*loc).text
             assert expect == reality, '断言失败，实际结果为：{}'.format(reality)
             return True
         except Exception as e:
