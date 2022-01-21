@@ -17,6 +17,10 @@ class PostQuestion(Base):
     }
 
     def post(self):
+        """
+        【数据管控】-【问题发布】-【发布问题】
+        :return:弹出框中的文本信息
+        """
         sleep(1)
         self.switch_frame('indexSrc')
         self.click(self.dict_loc['勾选框'])
