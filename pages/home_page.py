@@ -20,7 +20,7 @@ class HomeEnter(Base):
         """
         module = (manner_over, path_over)
         submodules = (manner, path)
-
+        self.switch_window(0)
         sleep(1)
         # 将鼠标移动到大模块之上
         self.mouse_over(module)
