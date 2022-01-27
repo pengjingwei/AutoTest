@@ -131,3 +131,7 @@ class metamodel_editField(Base):
         sleep(1)
         # 确定
         self.click(self.save)
+
+        sleep(1)
+        self.close()
+        self.switch_window(0)

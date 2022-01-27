@@ -33,7 +33,9 @@ class AddMetaData(Base):
     }
 
     def add(self):
-        self.switch_window()
+        enter = HomeEnter(self.driver)
+        enter.enter_front('id', '303', 'xpath', '//*[text()="元模型管理"]')
+        sleep(0.5)
         self.switch_frame('indexSrc')
         # 点击左侧ODS节点
         # self.click(self.dict_loc['左侧ODS节点'])
@@ -57,6 +59,10 @@ class AddMetaData(Base):
         self.input(self.dict_loc['点击输入英文表名'], self.dict_loc['表名'])
         self.input(self.dict_loc['输入版本'], self.dict_loc['版本'])
         self.click(self.dict_loc['保存'])
+        sleep(1)
+        self.close()
+        self.switch_window(0)
+        return self.dict_loc['表中文名']
 
 
 if __name__ == '__main__':
@@ -64,8 +70,6 @@ if __name__ == '__main__':
     # 登录中台
     login = Login(driver)
     login.login('admin', '123456')
-    enter = HomeEnter(driver)
-    enter.enter_front('id', '303', 'xpath', '//*[@title="元模型管理"]')
     # 实例化
     add_meta_data = AddMetaData(driver)
     add_meta_data.add()

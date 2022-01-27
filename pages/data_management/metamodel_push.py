@@ -26,6 +26,8 @@ class MetamodelPush(Base):
         :param source:推送数据来源，
         :return:弹出框中的文本信息
         """
+        enter = HomeEnter(self.driver)
+        enter.enter_front('id', '303', 'xpath', '//*[text()="元模型管理"]')
         sleep(1)
         self.switch_frame('indexSrc')
         self.click(self.dict_loc['ODS'])
@@ -53,9 +55,6 @@ if __name__ == '__main__':
 
     login = Login(driver)
     login.login('admin', '123456')
-
-    enter = HomeEnter(driver)
-    enter.enter_front('id', '303', 'xpath', '//*[text()="元模型管理"]')
 
     push = MetamodelPush(driver)
     res = push.push('ODS层的PAY_TEST')

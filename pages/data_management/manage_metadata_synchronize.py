@@ -24,6 +24,9 @@ class Synchronize(Base):
         【数据管控】-【元数据维护】-【同步】
         :return:无
         """
+        enter = HomeEnter(self.driver)
+        enter.enter_front('id', '303', 'xpath', '//*[text()="元数据维护"]')
+        sleep(1)
         self.switch_frame('indexSrc')
         self.click(self.dict_loc['展开预算信息'])
         self.click(self.dict_loc['预算编制'])
@@ -46,9 +49,6 @@ if __name__ == '__main__':
 
     login = Login(driver)
     login.login('admin', '123456')
-
-    enter = HomeEnter(driver)
-    enter.enter_front('id', '303', 'xpath', '//*[text()="元数据维护"]')
 
     sync = Synchronize(driver)
     sync.synchronize()
